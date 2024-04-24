@@ -38,7 +38,7 @@ namespace EntityFramework
         static void Main()
         {
             var options = new DbContextOptionsBuilder<BooksContext>()
-                .UseSqlite("Filename=../../MyLocalLibrary.db")
+                .UseNpgsql("UserID=postgres;Password=postgres;Host=db;Port=5432;Database=postgres;Pooling=true;")
                 .Options;
 
             using var db = new BooksContext(options);
