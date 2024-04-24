@@ -38,7 +38,7 @@ namespace EntityFramework
         static void Main()
         {
             var options = new DbContextOptionsBuilder<BooksContext>()
-                .UseSqlite("Filename=../../../MyLocalLibrary.db")
+                .UseSqlite("Filename=../../MyLocalLibrary.db")
                 .Options;
 
             using var db = new BooksContext(options);
