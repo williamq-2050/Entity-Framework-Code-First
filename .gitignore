@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# [BUG] CSDevKit creating entries
+# https://github.com/microsoft/vscode-dotnettools/issues/1008
+.mono
+
 # User-specific files
 *.rsuser
 *.suo
