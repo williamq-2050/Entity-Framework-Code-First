@@ -1,5 +1,6 @@
 ﻿using BookLibrary;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,10 @@ namespace EntityFramework
             var options = new DbContextOptionsBuilder<BooksContext>()
                 .UseNpgsql("UserID=postgres;Password=postgres;Host=db;Port=5432;Database=postgres;Pooling=true;")
                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+                .ConfigureWarnings(builder => builder.Log(
+                    (RelationalEventId.ConnectionOpened, LogLevel.Information),
+                    (RelationalEventId.ConnectionClosed, LogLevel.Information)
+                ))
                 .Options;
 
             using var db = new BooksContext(options);
